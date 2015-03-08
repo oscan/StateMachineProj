@@ -3,7 +3,10 @@ using System.Collections;
 
 public class Grazer : MonoBehaviour {
 
-	StateMachine sm;
+	public StateMachine sm;
+	public float hunger = 0.0f;
+	public Vector3 forward;
+	
 	// Use this for initialization
 	void Start () {
 		sm = GetComponent<StateMachine>();
@@ -12,6 +15,8 @@ public class Grazer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		hunger += Time.deltaTime * 0.1f;
+		forward = transform.forward;
+		transform.Translate(transform.forward*Time.deltaTime, Space.World);
 	}
 }

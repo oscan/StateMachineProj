@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class State {
 
-	GameObject gameObject;
+	protected GameObject gameObject;
 	public State(GameObject go){
 		gameObject = go;
 	}

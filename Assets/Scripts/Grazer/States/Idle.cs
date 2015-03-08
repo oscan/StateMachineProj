@@ -14,7 +14,10 @@ public class Idle : State {
 	
 	public override void Update (float dt)
 	{
-		
+		Grazer grazer = gameObject.GetComponent<Grazer>();
+		if(grazer.hunger > 0.5f){
+			grazer.sm.changeState(new Grazing(gameObject));
+		}
 	}
 	
 	public override void ExitState ()
