@@ -3,8 +3,13 @@ using System.Collections;
 
 public class Grazing : State {
 
-	public Grazing(GameObject go) : base(go){
+	public Grazer grazer;
+	public Transform foodTarget;	
+	public GameObject target;
 	
+	public Grazing(GameObject go) : base(go){
+		grazer = go.GetComponent<Grazer>();
+		foodTarget = go.transform.FindChild("foodTarget");
 	}
 	
 	public override void EnterState ()

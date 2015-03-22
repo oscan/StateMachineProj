@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StateMachine : MonoBehaviour {
 
-	State currentState;
+	public State currentState;
 	
 	void Update(){
 		if( currentState != null){
@@ -15,8 +15,9 @@ public class StateMachine : MonoBehaviour {
 		if(currentState != null){
 			currentState.ExitState();
 		}
-		
+		Debug.Log(currentState);
 		currentState = newState;
+		Debug.Log(currentState);
 		if(currentState != null){
 			currentState.EnterState();
 		}

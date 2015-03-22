@@ -6,6 +6,7 @@ public class Grazer : MonoBehaviour {
 	public StateMachine sm;
 	public float hunger = 0.0f;
 	public Vector3 forward;
+	public LayerMask foodMask;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,9 @@ public class Grazer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		hunger += Time.deltaTime * 0.1f;
+		if(!(sm.currentState is Eating)){
+			hunger += Time.deltaTime * 0.1f;
+		}
 		forward = transform.forward;
-		transform.Translate(transform.forward*Time.deltaTime, Space.World);
 	}
 }

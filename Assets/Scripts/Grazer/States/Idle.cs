@@ -16,7 +16,7 @@ public class Idle : State {
 	{
 		Grazer grazer = gameObject.GetComponent<Grazer>();
 		if(grazer.hunger > 0.5f){
-			grazer.sm.changeState(new Grazing(gameObject));
+			grazer.sm.changeState(new Searching(gameObject));
 		}
 	}
 	
