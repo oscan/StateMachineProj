@@ -8,6 +8,7 @@ public class Eating : Grazing {
 	public Eating(GameObject go, GameObject _target) : base(go){
 		target = _target;
 		grass = target.GetComponent<Grass>();
+		grass.eaten = true;
 	}
 	
 	public override void EnterState ()
@@ -17,16 +18,22 @@ public class Eating : Grazing {
 	
 	public override void Update (float dt)
 	{
-		grazer.hunger -= dt * 0.1f;
-		grass.quantity -= dt * 0.1f;
-		if(grass.quantity < 0) {
+		if(grass && grass.quantity > 0){
+			grazer.hunger -= dt * 0.1f * Random.Range(0.9f,1.1f);
+			grass.quantity -= dt * 0.1f;
+			if(grass.quantity < 0) {
+				GameObject.Destroy(target);
+				grass = null;
+				target = null;
+				grazer.sm.changeState( new Idle(gameObject));
+			}
+		} else {
 			grazer.sm.changeState( new Idle(gameObject));
-			GameObject.Destroy(grass);
 		}
 	}
 	
 	public override void ExitState ()
 	{
-		
+		gameObject.GetComponent<Animator>().SetTrigger("FinishedEat");
 	}
 }

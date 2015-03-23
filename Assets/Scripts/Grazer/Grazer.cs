@@ -5,11 +5,15 @@ public class Grazer : MonoBehaviour {
 
 	public StateMachine sm;
 	public float hunger = 0.0f;
+	public float hunger_limit = 0.5f;
+	public float fear = 0.0f;
 	public Vector3 forward;
 	public LayerMask foodMask;
+	public GameObject alert;
 	
 	// Use this for initialization
 	void Start () {
+		hunger_limit *= Random.Range(0.8f, 1.2f);
 		sm = GetComponent<StateMachine>();
 		sm.changeState(new Idle(gameObject));
 	}

@@ -15,9 +15,7 @@ public class StateMachine : MonoBehaviour {
 		if(currentState != null){
 			currentState.ExitState();
 		}
-		Debug.Log(currentState);
 		currentState = newState;
-		Debug.Log(currentState);
 		if(currentState != null){
 			currentState.EnterState();
 		}
